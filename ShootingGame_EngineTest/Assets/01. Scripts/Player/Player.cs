@@ -33,12 +33,18 @@ public class Player : Character
             state = State.Move;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.CompareTag("Monster"))
+        if (other.gameObject.CompareTag("Monster"))
         {
             state = State.Damaged;
             hp -= Monster.Instance.monsterDamage;
+            NockBack();
+        }
+        else if(other.gameObject.CompareTag("Meteor"))
+        {
+            state = State.Damaged;
+            hp -= 1;
             NockBack();
         }
     }

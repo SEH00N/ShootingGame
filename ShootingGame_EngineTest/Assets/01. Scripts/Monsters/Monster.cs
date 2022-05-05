@@ -15,6 +15,8 @@ public class Monster : Character
 
     public State state = State.Idle;
 
+    [SerializeField] protected Transform player;
+
     public float monsterDamage = 1f;
 
     protected override void Start()
@@ -30,9 +32,9 @@ public class Monster : Character
         CharacterDir();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.CompareTag("Bullet") || other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("Player"))
         {
             state = State.Damaged;
             hp -= Player.Instance.playerDamage;

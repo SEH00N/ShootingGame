@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: e87c8a15a1aa73049ac179bd0b407998
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Gabia Solmee
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 038cc7f4edb6fb649aa5cc9ad0c861ae, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

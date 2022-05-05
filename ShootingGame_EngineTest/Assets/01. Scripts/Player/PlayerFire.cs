@@ -28,9 +28,9 @@ public class PlayerFire : MonoBehaviour
 
     private IEnumerator InstantiateOrPool()
     {
-        if (GameManager.Instance.bulletPooling.transform.childCount > 0)
+        if (GameManager.Instance.BulletPooling.transform.childCount > 0)
         {
-            Transform bullet = GameManager.Instance.bulletPooling.GetChild(0);
+            Transform bullet = GameManager.Instance.BulletPooling.GetChild(0);
             bullet.SetParent(null);
             bullet.gameObject.SetActive(true);
             bullet.rotation = firePos.rotation;

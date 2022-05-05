@@ -19,20 +19,23 @@ public class BulletMove : MonoBehaviour
 
     private void Limit()
     {
-        if(transform.position.x > GameManager.Instance.maxPos.position.x ||
-           transform.position.x < GameManager.Instance.minPos.position.x)
+        Vector2 pos = transform.position;
+        if (pos.x > GameManager.Instance.maxPos.position.x ||
+           pos.x < GameManager.Instance.minPos.position.x ||
+           pos.y > GameManager.Instance.maxPos.position.y ||
+           pos.y < GameManager.Instance.minPos.position.y)
             DeSpawn();
     }
 
     private void DeSpawn()
     {
-        transform.SetParent(GameManager.Instance.bulletPooling);
+        transform.SetParent(GameManager.Instance.BulletPooling);
         gameObject.SetActive(false);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.CompareTag("Monster"))
+        if (other.gameObject.CompareTag("Monster") || other.gameObject.CompareTag("Meteor"))
             DeSpawn();
     }
 }

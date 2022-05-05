@@ -7,6 +7,7 @@ public class Character : MonoBehaviour
 {
     [SerializeField] protected float speed = 5f;
     [SerializeField] protected float hp = 10f;
+    [SerializeField] GameObject pwrUp;
 
     protected Rigidbody2D rb2d;
     protected Collider2D col2d;
@@ -33,6 +34,9 @@ public class Character : MonoBehaviour
         {
             transform.SetParent(GameManager.Instance.EntityPooling);
             gameObject.SetActive(false);
+            int randVal = Random.Range(0, 100);
+            if(randVal > 95)
+                Instantiate(pwrUp, transform.position, Quaternion.identity);
         }
     }
 }
