@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
 
     public Transform EntityPooling{ get; private set; }
     public Transform BulletPooling{ get; private set; }
+    public Transform GunnerBulletPooling{ get; private set; }
 
     public Transform minPos;
     public Transform maxPos;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
         BulletPooling = GameObject.Find("BulletPooling").transform;
         EntityPooling = GameObject.Find("EntityPooling").transform;
+        GunnerBulletPooling = GameObject.Find("GunnerBulletPooling").transform;
     }
 
     private void Update()

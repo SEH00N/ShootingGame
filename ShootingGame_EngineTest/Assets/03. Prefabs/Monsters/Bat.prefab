@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 551491573326099608}
   - component: {fileID: 551491573326099606}
   - component: {fileID: 551491573326099609}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bat
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   hp: 5
+  pwrUp: {fileID: 0}
   state: 0
   player: {fileID: 0}
   monsterDamage: 1
