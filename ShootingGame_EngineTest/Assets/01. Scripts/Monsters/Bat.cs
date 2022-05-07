@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Bat : Monster
 {
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        rb2d.gravityScale = 0;
+    }
+
     protected override void Update()
     {
         base.Update();

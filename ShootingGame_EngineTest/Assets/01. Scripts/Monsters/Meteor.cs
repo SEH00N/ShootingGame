@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Meteor : Character
 {
-    protected override void Start()
+    protected override void OnEnable()
     {
-        base.Start();
+        base.OnEnable();
         hp = 0;
         speed = Random.Range(2f, 10f);
     }

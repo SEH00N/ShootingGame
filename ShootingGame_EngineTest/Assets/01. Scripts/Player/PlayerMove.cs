@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : Player
 {
-    [SerializeField] float jumpPwr = 5f;
+    [SerializeField] float jumpPwr = 13f;
     
     [SerializeField] LayerMask groundLayer;
 
@@ -21,8 +21,9 @@ public class PlayerMove : Player
         if(state != State.Damaged)
         {
             PlayerMovement();
-            PlayerJumping();
         }
+            PlayerJumping();
+            PlayerDash();
     }
 
     private void PlayerMovement()
@@ -43,6 +44,20 @@ public class PlayerMove : Player
         }
         if(isGround())
             jumpCount = 0;
+    }
+
+    private void PlayerDash()
+    {
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 14f;
+            jumpPwr = 17f;
+        }
+        else
+        {
+            speed = 7f;
+            jumpPwr = 13f;
+        }
     }
 
     private bool isGround()

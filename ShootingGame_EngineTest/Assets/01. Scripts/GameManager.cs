@@ -19,22 +19,22 @@ public class GameManager : MonoBehaviour
 
     public Difficulty difficulty = Difficulty.begginer;
 
-    public Transform EntityPooling{ get; private set; }
-    public Transform BulletPooling{ get; private set; }
-    public Transform GunnerBulletPooling{ get; private set; }
+    public Transform EntityPooling;
+    public Transform BulletPooling;
+    public Transform GunnerBulletPooling;
 
     public Transform minPos;
     public Transform maxPos;
 
     public float elapsedTime;
-
-    private void Start()
+    
+    private void Awake()
     {
         if(Instance == null)
             Instance = this;
-        BulletPooling = GameObject.Find("BulletPooling").transform;
-        EntityPooling = GameObject.Find("EntityPooling").transform;
-        GunnerBulletPooling = GameObject.Find("GunnerBulletPooling").transform;
+        // BulletPooling = GameObject.Find("BulletPooling").transform;
+        // EntityPooling = GameObject.Find("EntityPooling").transform;
+        // GunnerBulletPooling = GameObject.Find("GunnerBulletPooling").transform;
     }
 
     private void Update()

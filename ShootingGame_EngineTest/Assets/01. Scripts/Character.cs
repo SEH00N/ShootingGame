@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] protected float speed = 5f;
-    [SerializeField] protected float hp = 10f;
+    [SerializeField] protected float speed = 7f;
+    public float hp = 10f;
     [SerializeField] GameObject pwrUp;
 
     protected Rigidbody2D rb2d;
@@ -14,10 +14,12 @@ public class Character : MonoBehaviour
 
     public bool IsRight { get; private set; } = false;
 
-    protected virtual void Start()
+    protected virtual void OnEnable()
     {
-        rb2d = GetComponent<Rigidbody2D>();
-        col2d = GetComponent<Collider2D>();
+        if(rb2d == null)
+            rb2d = GetComponent<Rigidbody2D>();
+        if(col2d == null)
+            col2d = GetComponent<Collider2D>();
     }
     
     public void CharacterDir()

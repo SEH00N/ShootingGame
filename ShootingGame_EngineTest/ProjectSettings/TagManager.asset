@@ -8,6 +8,7 @@ TagManager:
   - Monster
   - Meteor
   - GunnerBullet
+  - Melee
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Player
   - Monster
   - GunnerBullet
-  - 
+  - Melee
   - 
   - 
   - 

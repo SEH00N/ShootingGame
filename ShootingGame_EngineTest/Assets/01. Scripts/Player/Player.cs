@@ -12,15 +12,15 @@ public class Player : Character
         Move,
         Fire,
         Damaged,
+        Untouched,
     }
 
     public State state = State.Idle;
 
     public float playerDamage = 1f;
 
-    protected override void Start()
+    protected virtual void Start()
     {
-        base.Start();
         if (Instance == null)
             Instance = this;
     }
@@ -35,13 +35,13 @@ public class Player : Character
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Monster"))
+        if (other.gameObject.CompareTag("Monster") && state != State.Damaged)
         {
             state = State.Damaged;
             hp -= Monster.Instance.monsterDamage;
             NockBack();
         }
-        else if(other.gameObject.CompareTag("Meteor"))
+        else if(other.gameObject.CompareTag("Meteor") && state != State.Damaged)
         {
             state = State.Damaged;
             hp -= 1;
@@ -57,10 +57,10 @@ public class Player : Character
 
     private void NockBack()
     {
-        if(rb2d.velocity.x < 0)
-            rb2d.AddForce(new Vector2(10, 0), ForceMode2D.Impulse);
-        else if(rb2d.velocity.x > 0.1f)
-            rb2d.AddForce(new Vector2(-10, 0), ForceMode2D.Impulse);
+        if(transform.rotation.y == 0)
+            rb2d.AddForce(new Vector2(-5, 0), ForceMode2D.Impulse);
+        else
+            rb2d.AddForce(new Vector2(5, 0), ForceMode2D.Impulse);
         StartCoroutine(StateMove());
     }
 }

@@ -9,7 +9,8 @@ public class PwrUp : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Destroy(gameObject);
-            Player.Instance.playerDamage += 2;
+            Player.Instance.hp += 3;
+            Player.Instance.playerDamage += 1;
         }
     }
 }

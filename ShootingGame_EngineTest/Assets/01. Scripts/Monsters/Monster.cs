@@ -19,11 +19,13 @@ public class Monster : Character
 
     public float monsterDamage = 1f;
 
-    protected override void Start()
+    protected override void OnEnable()
     {
-        base.Start();
+        base.OnEnable();
         if (Instance == null)
             Instance = this;
+        GameManager.Instance = FindObjectOfType<GameManager>();
+        rb2d.gravityScale = 10f;
     }
 
     protected virtual void Update()
@@ -34,7 +36,18 @@ public class Monster : Character
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("Player"))
+        if (((other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("Player")))
+        && state != State.Damaged)
+        {
+            state = State.Damaged;
+            hp -= Player.Instance.playerDamage;
+            NockBack();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Melee") && state != State.Damaged)
         {
             state = State.Damaged;
             hp -= Player.Instance.playerDamage;
@@ -50,10 +63,10 @@ public class Monster : Character
 
     private void NockBack()
     {
-        if(rb2d.velocity.x < 0)
-            rb2d.AddForce(new Vector2(10, 0), ForceMode2D.Impulse);
-        else if(rb2d.velocity.x > 0.1f)
-            rb2d.AddForce(new Vector2(-10, 0), ForceMode2D.Impulse);
+        if (transform.rotation.y == 0)
+            rb2d.AddForce(new Vector2(-20, 0), ForceMode2D.Impulse);
+        else
+            rb2d.AddForce(new Vector2(20, 0), ForceMode2D.Impulse);
         StartCoroutine(StateMove());
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunDir : MonoBehaviour
+public class FireDir : MonoBehaviour
 {
 
     private void Update()
