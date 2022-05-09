@@ -20,7 +20,6 @@ public class Bat : Monster
     private void Followplayer()
     {
         Vector2 target = player.position - transform.position;
-
         rb2d.velocity = target * speed;
     }
 

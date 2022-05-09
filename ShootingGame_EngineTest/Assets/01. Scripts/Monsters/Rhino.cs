@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rhino : Monster
+public class Rhino : Ground
 {
     [SerializeField] float rushTime;
 

@@ -19,7 +19,7 @@ public class PlayerFire : MonoBehaviour
     private void Fire()
     {
         currentTime += Time.deltaTime;
-        if (Input.GetButtonDown("Fire1") && currentTime > fireDelay)
+        if (Input.GetButton("Fire1") && currentTime > fireDelay)
         {
             StartCoroutine(InstantiateOrPool());
             currentTime = 0;

@@ -13,13 +13,13 @@ GameObject:
   - component: {fileID: -5488593874272444673}
   - component: {fileID: 7107172851282093235}
   - component: {fileID: 7107172851282093234}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Meteor
   m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7107172851282093233
 Transform:
   m_ObjectHideFlags: 0
@@ -135,5 +135,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  hp: 10
-  pwrUp: {fileID: 0}
+  initialHp: 10
+  hp: 0
+  pwrUp: {fileID: 6024981042123859513, guid: 471431f63dc4bf34aa375f0ea05116ec, type: 3}

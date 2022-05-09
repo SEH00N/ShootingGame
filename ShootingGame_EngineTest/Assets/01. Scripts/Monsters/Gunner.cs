@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gunner : Monster
+public class Gunner : Ground
 {
     protected Vector3 randPos;
     protected Vector2 targetPos;
@@ -49,6 +49,7 @@ public class Gunner : Monster
 
     private IEnumerator Fire()
     {
+        yield return new WaitForSeconds(2f);
         while (true)
         {
             if (GameManager.Instance.GunnerBulletPooling.transform.childCount > 3)

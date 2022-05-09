@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6293681436508318347
 Transform:
   m_ObjectHideFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6293681436508318346}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.455021, y: 2.5600004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  hp: 10
+  initialHp: 10
+  hp: 0
   pwrUp: {fileID: 6024981042123859513, guid: 471431f63dc4bf34aa375f0ea05116ec, type: 3}
   state: 0
   player: {fileID: 0}
@@ -154,7 +155,7 @@ MonoBehaviour:
   gunnerBullet: {fileID: 5157781611997948595, guid: d753cdeb54ac38f4089d372e50f86aea, type: 3}
   gunnerFirePos: {fileID: 6293681437164205558}
   fireDelay: 0
-  fireinterval: 1
+  fireinterval: 2
 --- !u!1 &6293681437164205557
 GameObject:
   m_ObjectHideFlags: 0

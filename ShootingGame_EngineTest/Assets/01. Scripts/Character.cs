@@ -6,7 +6,8 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] protected float speed = 7f;
-    public float hp = 10f;
+    [SerializeField] float initialHp;
+    public float hp;
     [SerializeField] GameObject pwrUp;
 
     protected Rigidbody2D rb2d;
@@ -20,6 +21,7 @@ public class Character : MonoBehaviour
             rb2d = GetComponent<Rigidbody2D>();
         if(col2d == null)
             col2d = GetComponent<Collider2D>();
+        hp = initialHp;
     }
     
     public void CharacterDir()
@@ -38,7 +40,7 @@ public class Character : MonoBehaviour
             gameObject.SetActive(false);
             int randVal = Random.Range(0, 100);
             if(randVal > 95)
-                Instantiate(pwrUp, transform.position, Quaternion.identity);
+                Instantiate(pwrUp, new Vector3(transform.position.x, transform.position.y + 5), Quaternion.identity);
         }
     }
 }

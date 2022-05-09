@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Meteor : Character
-{
+{   
     protected override void OnEnable()
     {
         base.OnEnable();
         hp = 0;
         speed = Random.Range(2f, 10f);
+        SetPos();
     }
 
     void Update()
@@ -23,7 +24,16 @@ public class Meteor : Character
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("123");
         EntityDeSpawn();
+    }
+
+    private void SetPos()
+    {
+        Vector2 min = GameManager.Instance.minPos.position;
+        Vector2 max = GameManager.Instance.maxPos.position;
+
+        Vector2 randPos = new Vector2(Random.Range(min.x + 5, max.x - 5), max.y);
+
+        transform.position = randPos;
     }
 }

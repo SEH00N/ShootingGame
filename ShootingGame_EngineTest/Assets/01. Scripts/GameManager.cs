@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     public enum Difficulty
     {
-        begginer = 0,
+        beginner = 0,
         easy,
         normal,
         hard,
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
         extreme,
     }
 
-    public Difficulty difficulty = Difficulty.begginer;
+    public Difficulty difficulty = Difficulty.beginner;
 
     public Transform EntityPooling;
     public Transform BulletPooling;
@@ -32,9 +32,6 @@ public class GameManager : MonoBehaviour
     {
         if(Instance == null)
             Instance = this;
-        // BulletPooling = GameObject.Find("BulletPooling").transform;
-        // EntityPooling = GameObject.Find("EntityPooling").transform;
-        // GunnerBulletPooling = GameObject.Find("GunnerBulletPooling").transform;
     }
 
     private void Update()
@@ -48,7 +45,7 @@ public class GameManager : MonoBehaviour
         switch(Math.Truncate(elapsedTime / 300))
         {
             case 0:
-                difficulty = Difficulty.begginer;
+                difficulty = Difficulty.beginner;
                 break;
             case 1:
                 difficulty = Difficulty.easy;
