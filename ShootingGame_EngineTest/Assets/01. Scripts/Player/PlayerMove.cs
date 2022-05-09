@@ -33,6 +33,10 @@ public class PlayerMove : Player
         float h = Input.GetAxisRaw("Horizontal");
         Vector2 dir = new Vector2(h * speed, rb2d.velocity.y);
         rb2d.velocity = dir;
+        Vector3 limit = new Vector3(Mathf.Clamp(transform.position.x, 
+        GameManager.Instance.minPos.position.x + 6.5f, GameManager.Instance.maxPos.position.x - 6.5f), transform.position.y);
+
+        transform.position = limit;
     }
 
     private void PlayerJumping()

@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,6 +38,7 @@ public class Monster : Character
     {
         EntityDeSpawn();
         CharacterDir();
+        Blocking();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -98,5 +100,13 @@ public class Monster : Character
             speed += endSpeed / 10;
             yield return new WaitForSeconds(0.5f);
         }
+    }
+
+    private void Blocking()
+    {
+        Vector3 limit = new Vector3(Mathf.Clamp(transform.position.x, 
+        GameManager.Instance.minPos.position.x, GameManager.Instance.maxPos.position.x), transform.position.y);
+
+        transform.position = limit;
     }
 }
