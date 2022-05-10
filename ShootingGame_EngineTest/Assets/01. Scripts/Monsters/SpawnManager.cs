@@ -4,20 +4,46 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public static SpawnManager Instance;
+
     [SerializeField] Transform enities;
-    private List<GameObject> monsters = new List<GameObject>();
     [SerializeField] float delay;
     [SerializeField] float maxCount;
 
+    private List<GameObject> monsters = new List<GameObject>();
+
+    public Transform bossEntities;
+    public bool isSpawning = false;
+
+    private void Awake()
+    {
+        if(Instance == null)
+            Instance = this;
+    }
+
     private void OnEnable()
     {
-        StartCoroutine(SpawnMonsters());
+        StartMethod();
     }
 
     private void Update()
     {
         DelaySet();
         CountSet();
+    }
+
+    IEnumerator coroutine;
+    public void StartMethod()
+    {
+        coroutine = SpawnMonsters();
+        StartCoroutine(coroutine);
+        isSpawning = true;
+    }
+    public void StopMethod()
+    {
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+        isSpawning = false;
     }
 
     private IEnumerator SpawnMonsters()
@@ -35,6 +61,17 @@ public class SpawnManager : MonoBehaviour
             }
             yield return new WaitForSeconds(delay);
         }
+    }
+
+    public IEnumerator SpawnGolems(int count)
+    {
+        for(int i = 0; i < count; i++)
+        {
+            GameObject golem = GameManager.Instance.BossEntityPooling.transform.GetChild(0).gameObject;
+            golem.transform.SetParent(bossEntities);
+            golem.SetActive(true);
+        }
+        yield return 0;
     }
 
     private void DelaySet()

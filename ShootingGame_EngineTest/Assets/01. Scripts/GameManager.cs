@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     public Difficulty difficulty = Difficulty.beginner;
 
+    public Transform BossEntityPooling;
     public Transform EntityPooling;
     public Transform BulletPooling;
     public Transform GunnerBulletPooling;
@@ -27,6 +28,9 @@ public class GameManager : MonoBehaviour
     public Transform maxPos;
 
     public float elapsedTime;
+    public int spawnCount = 0;
+
+    public bool isGolem = false;
     
     private void Awake()
     {
@@ -37,18 +41,19 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        GameDifficulty();
+        SetDifficulty();
     }
 
-    private void GameDifficulty()
+    private void SetDifficulty()
     {
-        switch(Math.Truncate(elapsedTime / 300))
+        switch(Mathf.Floor(elapsedTime) / 300)
         {
             case 0:
                 difficulty = Difficulty.beginner;
                 break;
             case 1:
                 difficulty = Difficulty.easy;
+                StartCoroutine(SpawnGolems());
                 break;
             case 2:
                 difficulty = Difficulty.normal;
@@ -63,5 +68,18 @@ public class GameManager : MonoBehaviour
                 difficulty = Difficulty.extreme;
                 break;
         }
+    }
+
+    private IEnumerator SpawnGolems()
+    {
+        if(!isGolem)
+            while(true)
+            {
+                isGolem = true;
+                spawnCount++;
+                SpawnManager.Instance.StopMethod();
+                StartCoroutine(SpawnManager.Instance.SpawnGolems(spawnCount));
+                yield return new WaitForSeconds(300);
+            }
     }
 }
