@@ -17,9 +17,9 @@ public class Rhino : Ground
         while(true)
         {
             if(player.position.x > transform.position.x)
-                rb2d.velocity = Vector2.right * speed;
+                rb2d.velocity = Vector2.right.normalized * speed;
             else
-                rb2d.velocity = Vector2.left * speed;
+                rb2d.velocity = Vector2.left.normalized * speed;
             yield return new WaitForSeconds(rushTime);
         }
     }

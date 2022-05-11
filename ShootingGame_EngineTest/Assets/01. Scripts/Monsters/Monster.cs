@@ -12,11 +12,13 @@ public class Monster : Character
         Idle = 0,
         Move,
         Damaged,
+        Attack,
     }
 
     public State state = State.Idle;
 
     [SerializeField] protected Transform player;
+    [SerializeField] protected LayerMask palyerLayer;
 
     public float monsterDamage = 1f;
 
@@ -31,7 +33,6 @@ public class Monster : Character
         state = State.Idle;
         rb2d.gravityScale = 10;
         SetStartPos();
-        StartCoroutine(GetSpeed());
     }
 
     protected virtual void Update()
@@ -48,7 +49,7 @@ public class Monster : Character
         {
             state = State.Damaged;
             hp -= Player.Instance.playerDamage;
-            NockBack(nockBackPwr);
+            StartCoroutine(NockBack(nockBackPwr));
         }
     }
 
@@ -58,23 +59,18 @@ public class Monster : Character
         {
             state = State.Damaged;
             hp -= Player.Instance.playerDamage;
-            NockBack(nockBackPwr * 2);
+            StartCoroutine(NockBack(nockBackPwr * 2));
         }
     }
 
-    private IEnumerator StateMove()
-    {
-        yield return new WaitForSeconds(0.5f);
-        state = State.Move;
-    }
-
-    private void NockBack(float pwr)
+    private IEnumerator NockBack(float pwr)
     {
         if (transform.rotation.y == 0)
             rb2d.AddForce(new Vector2(-pwr, 0), ForceMode2D.Impulse);
         else
             rb2d.AddForce(new Vector2(pwr, 0), ForceMode2D.Impulse);
-        StartCoroutine(StateMove());
+        yield return new WaitForSeconds(0.5f);
+        state = State.Move;
     }
 
     private void SetStartPos()
@@ -91,22 +87,18 @@ public class Monster : Character
         transform.position = startPos;
     }
 
-    private IEnumerator GetSpeed()
-    {
-        float endSpeed = speed;
-        speed = 0;
-        for(int i = 0; i < 10; i++)
-        {
-            speed += endSpeed / 10;
-            yield return new WaitForSeconds(0.5f);
-        }
-    }
-
     public void Blocking()
     {
         Vector3 limit = new Vector3(Mathf.Clamp(transform.position.x, 
         GameManager.Instance.minPos.position.x, GameManager.Instance.maxPos.position.x), transform.position.y);
 
         transform.position = limit;
+    }
+
+    protected bool isNear(float distance)
+    {
+        Vector2 col2dSize = col2d.bounds.size;
+        Vector2 size = new Vector2(col2dSize.x + distance, col2dSize.y);
+        return Physics2D.OverlapBox(transform.position, size, 0, palyerLayer);
     }
 }

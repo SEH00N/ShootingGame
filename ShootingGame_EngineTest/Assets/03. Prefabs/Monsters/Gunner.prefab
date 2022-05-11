@@ -98,12 +98,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceab1647223bccb4fa26781e56d47b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 10
   initialHp: 8
   hp: 0
   pwrUp: {fileID: 6024981042123859513, guid: 471431f63dc4bf34aa375f0ea05116ec, type: 3}
   state: 0
   player: {fileID: 0}
+  palyerLayer:
+    serializedVersion: 2
+    m_Bits: 256
   monsterDamage: 1
   gunnerBullet: {fileID: 5157781611997948595, guid: d753cdeb54ac38f4089d372e50f86aea, type: 3}
   gunnerFirePos: {fileID: 4070972484928889402}

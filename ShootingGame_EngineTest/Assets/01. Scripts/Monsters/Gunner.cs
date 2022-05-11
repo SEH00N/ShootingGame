@@ -9,6 +9,7 @@ public class Gunner : Ground
     protected Vector2 targetPos;
     protected Vector2 target;
     protected float angle;
+    protected bool onRight;
     [SerializeField] GameObject gunnerBullet;
     [SerializeField] Transform gunnerFirePos;
     [SerializeField] float fireDelay;
@@ -17,23 +18,36 @@ public class Gunner : Ground
     protected override void OnEnable()
     {
         base.OnEnable();
-        randPos = new Vector3(Random.Range(-13, 13), transform.position.y);
+        randPos = new Vector2(Random.Range(-13, 13), transform.position.y);
         StartCoroutine(Fire());
+        RightFromTarget();
+        StartCoroutine(Positioning());
     }
 
     protected override void Update()
     {
         base.Update();
-        if (state != State.Damaged)
-            Positioning();
         targeting();
     }
 
-    protected virtual void Positioning()
+    protected virtual IEnumerator Positioning()
     {
         targetPos = randPos - transform.position;
-        Vector2 dir = new Vector2(targetPos.x, rb2d.velocity.y);
-        rb2d.velocity = dir * speed;
+        while((onRight && transform.position.x <= randPos.x) || (!onRight && transform.position.x >= randPos.x))
+        {
+            Vector2 dir = new Vector2(targetPos.x, rb2d.velocity.y);
+            rb2d.velocity = dir.normalized * speed;
+            yield return 0;
+        }
+        yield return 0;
+    }
+
+    private bool RightFromTarget()
+    {
+        if(randPos.x > transform.position.x)
+            return onRight = true;
+        else
+            return onRight = false;
     }
 
     private void targeting()

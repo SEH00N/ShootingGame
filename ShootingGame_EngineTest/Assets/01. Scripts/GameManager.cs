@@ -36,37 +36,21 @@ public class GameManager : MonoBehaviour
     {
         if(Instance == null)
             Instance = this;
+            StartCoroutine(ChangeDifficult());
     }
 
     private void Update()
     {
         elapsedTime += Time.deltaTime;
-        SetDifficulty();
     }
 
-    private void SetDifficulty()
+    private IEnumerator ChangeDifficult()
     {
-        switch(Mathf.Floor(elapsedTime) / 300)
+        while(true)
         {
-            case 0:
-                difficulty = Difficulty.beginner;
-                break;
-            case 1:
-                difficulty = Difficulty.easy;
-                StartCoroutine(SpawnGolems());
-                break;
-            case 2:
-                difficulty = Difficulty.normal;
-                break;
-            case 3:
-                difficulty = Difficulty.hard;
-                break;
-            case 4:
-                difficulty = Difficulty.veryHard;
-                break;
-            case 5:
-                difficulty = Difficulty.extreme;
-                break;
+            yield return new WaitForSeconds(300f);
+            difficulty += 1;
+            StartCoroutine(SpawnGolems());
         }
     }
 
