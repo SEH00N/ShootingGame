@@ -10,10 +10,16 @@ public class Gunner : Ground
     private Vector2 target;
     private float angle;
     private bool onRight;
+    [SerializeField] Animator animator;
     [SerializeField] GameObject gunnerBullet;
     [SerializeField] Transform gunnerFirePos;
     [SerializeField] float fireDelay;
     [SerializeField] float fireinterval;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     protected override void OnEnable()
     {
@@ -33,7 +39,7 @@ public class Gunner : Ground
     private IEnumerator Positioning()
     {
         targetPos = randPos - transform.position;
-        while((onRight && transform.position.x <= randPos.x) || (!onRight && transform.position.x >= randPos.x))
+        while(((onRight && transform.position.x <= randPos.x) || (!onRight && transform.position.x >= randPos.x)) && state != State.Damaged)
         {
             Vector2 dir = new Vector2(targetPos.x, rb2d.velocity.y);
             rb2d.velocity = dir.normalized * speed;
@@ -63,9 +69,10 @@ public class Gunner : Ground
 
     private IEnumerator Fire()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         while (true)
         {
+            animator.SetTrigger("Fire");
             if (GameManager.Instance.GunnerBulletPooling.transform.childCount > 3)
                 for (int i = 0; i < 3; i++)
                 {

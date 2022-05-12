@@ -37,7 +37,7 @@ public class Drone : Monster
     private IEnumerator PositioningX()
     {
         targetPos = randPos - transform.position;
-        while((onRight && transform.position.x <= randPos.x) || (!onRight && transform.position.x >= randPos.x))
+        while(((onRight && transform.position.x <= randPos.x) || (!onRight && transform.position.x >= randPos.x)) && state != State.Damaged)
         {
             Vector2 dir = new Vector2(targetPos.x, rb2d.velocity.y);
             rb2d.velocity = dir.normalized * speed;
@@ -49,7 +49,7 @@ public class Drone : Monster
     private IEnumerator PositioningY()
     {
         targetPos = randPos - transform.position;
-        while((onUp && transform.position.y <= randPos.y) || (!onUp && transform.position.y >= randPos.y))
+        while(((onUp && transform.position.y <= randPos.y) || (!onUp && transform.position.y >= randPos.y)) && state != State.Damaged)
         {
             Vector2 dir = new Vector2(rb2d.velocity.x, targetPos.y);
             rb2d.velocity = dir.normalized * speed;

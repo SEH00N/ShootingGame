@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4070972483339766897}
   - component: {fileID: 4070972483339766896}
   - component: {fileID: 4070972483339766908}
+  - component: {fileID: 3897896269548337735}
   m_Layer: 9
   m_Name: Gunner
   m_TagString: Monster
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cd91bc677af076c4ca00446ad827a59e, type: 3}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 651909317981808331, guid: 3be1add67dab71a45a7ac127437d6b53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceab1647223bccb4fa26781e56d47b65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 6
   initialHp: 8
   hp: 0
   pwrUp: {fileID: 6024981042123859513, guid: 471431f63dc4bf34aa375f0ea05116ec, type: 3}
@@ -108,6 +109,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   monsterDamage: 1
+  animator: {fileID: 0}
   gunnerBullet: {fileID: 5157781611997948595, guid: d753cdeb54ac38f4089d372e50f86aea, type: 3}
   gunnerFirePos: {fileID: 4070972484928889402}
   fireDelay: 5
@@ -125,18 +127,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07714653, y: 0.054343224}
+  m_Offset: {x: -0.4468465, y: 0.5310035}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.4, y: 2.8}
+    oldSize: {x: 4.266667, y: 4.266667}
     newSize: {x: 3.4, y: 2.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7532787, y: 2.1720057}
+  m_Size: {x: 2.4926786, y: 2.635869}
   m_EdgeRadius: 0
 --- !u!50 &4070972483339766908
 Rigidbody2D:
@@ -159,6 +161,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &3897896269548337735
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4070972483339766899}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 73ee9be6e75f46846ba897c5348bbced, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4070972484928889405
 GameObject:
   m_ObjectHideFlags: 0
