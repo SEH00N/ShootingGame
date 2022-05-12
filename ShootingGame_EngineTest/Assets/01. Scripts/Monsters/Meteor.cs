@@ -19,7 +19,7 @@ public class Meteor : Character
 
     private void MeteorDrop()
     {
-        transform.Translate(Vector3.down * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6945038555431361851}
   - component: {fileID: 6945038555431361850}
-  - component: {fileID: 6945038555431361849}
+  - component: {fileID: 6400390021902003802}
   - component: {fileID: 6945038555431361848}
   - component: {fileID: 6945038555431361855}
+  - component: {fileID: 7966143296889647277}
   m_Layer: 9
-  m_Name: Rhino
-  m_TagString: Monster
+  m_Name: Goblin
+  m_TagString: Goblin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,9 +75,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0a15c02d75e0dd644924edd15f54e39a, type: 3}
+  m_Sprite: {fileID: -7857660982706648020, guid: ba302ce941ec36c4caacb20d5b1f6915, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 6.3, y: 3.15}
@@ -85,8 +86,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6945038555431361849
-BoxCollider2D:
+--- !u!70 &6400390021902003802
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,19 +99,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11007857, y: -0.15540504}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.25, y: 2.625}
-    newSize: {x: 6.3, y: 3.15}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.7449336, y: 2.0292797}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.1319766, y: -0.76973915}
+  m_Size: {x: 3.0582628, y: 3.831192}
+  m_Direction: 0
 --- !u!50 &6945038555431361848
 Rigidbody2D:
   serializedVersion: 4
@@ -131,7 +122,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &6945038555431361855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,5 +141,27 @@ MonoBehaviour:
   pwrUp: {fileID: 6024981042123859513, guid: 471431f63dc4bf34aa375f0ea05116ec, type: 3}
   state: 0
   player: {fileID: 0}
+  palyerLayer:
+    serializedVersion: 2
+    m_Bits: 0
   monsterDamage: 1
-  rushTime: 1
+  rushTime: 2
+--- !u!95 &7966143296889647277
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6945038555431361854}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bae0294ab8e6cc14faa811946669cd6d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

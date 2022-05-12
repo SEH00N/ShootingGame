@@ -44,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.37363577, y: 0.36118102}
+  m_Offset: {x: 0.25671053, y: 0.36118102}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9963598, y: 3.5158134}
+  m_Size: {x: 3.2570524, y: 3.5158134}
   m_EdgeRadius: 0
 --- !u!1 &7376249543451571771
 GameObject:
@@ -66,11 +66,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7376249543451571769}
-  - component: {fileID: 7376249543451571770}
-  - component: {fileID: 7376249543451571766}
-  - component: {fileID: 7376249543451571767}
-  - component: {fileID: 7376249543451571768}
-  - component: {fileID: 894146368508175678}
+  - component: {fileID: 3269595768855529251}
+  - component: {fileID: 7235679890760917532}
+  - component: {fileID: 1648079463401338008}
+  - component: {fileID: 9002908434882074275}
+  - component: {fileID: 8340229693187336233}
   m_Layer: 9
   m_Name: Skeleton
   m_TagString: Monster
@@ -93,7 +93,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7376249543451571770
+--- !u!212 &3269595768855529251
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,36 +138,13 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.8333334, y: 2.75}
+  m_Size: {x: 2.75, y: 4.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7376249543451571766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7376249543451571771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b5dc6fcacb3be74bbe4a5698026506f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 6
-  initialHp: 5
-  hp: 0
-  pwrUp: {fileID: 6024981042123859513, guid: 471431f63dc4bf34aa375f0ea05116ec, type: 3}
-  state: 0
-  player: {fileID: 0}
-  palyerLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  monsterDamage: 1
-  attack: {fileID: 4672967187302178715}
---- !u!50 &7376249543451571767
+--- !u!50 &7235679890760917532
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -188,7 +165,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &7376249543451571768
+--- !u!61 &1648079463401338008
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,20 +178,43 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.40654373, y: -0.47690034}
+  m_Offset: {x: -0.37443876, y: -0.4942584}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.75, y: 4.125}
-    newSize: {x: 1.8333334, y: 2.75}
+    newSize: {x: 2.75, y: 4.125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6489105, y: 3.1398854}
+  m_Size: {x: 1.7488775, y: 3.126811}
   m_EdgeRadius: 0
---- !u!95 &894146368508175678
+--- !u!114 &9002908434882074275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7376249543451571771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5dc6fcacb3be74bbe4a5698026506f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7
+  initialHp: 5
+  hp: 0
+  pwrUp: {fileID: 6024981042123859513, guid: 471431f63dc4bf34aa375f0ea05116ec, type: 3}
+  state: 0
+  player: {fileID: 0}
+  palyerLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  monsterDamage: 1
+  attack: {fileID: 4672967187302178715}
+--- !u!95 &8340229693187336233
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

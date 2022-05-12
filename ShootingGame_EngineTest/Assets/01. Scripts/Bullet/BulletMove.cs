@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,7 +36,7 @@ public class BulletMove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Monster") || other.gameObject.CompareTag("Meteor"))
+        if (other.gameObject.CompareTag("Monster") || other.gameObject.CompareTag("Meteor") || other.gameObject.CompareTag("Goblin"))
             DeSpawn();
     }
 }

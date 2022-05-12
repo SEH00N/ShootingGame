@@ -21,8 +21,8 @@ public class PlayerMove : Player
         if(state != State.Damaged)
         {
             PlayerMovement();
-        }
             PlayerJumping();
+        }
             PlayerDash();
     }
 

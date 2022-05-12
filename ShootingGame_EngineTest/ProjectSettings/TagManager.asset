@@ -9,6 +9,7 @@ TagManager:
   - Meteor
   - GunnerBullet
   - Melee
+  - Goblin
   layers:
   - Default
   - TransparentFX

@@ -39,22 +39,28 @@ public class Player : Character
         {
             state = State.Damaged;
             hp -= Monster.Instance.monsterDamage;
-            StartCoroutine(NockBack());
+            StartCoroutine(NockBack(10));
         }
         else if(other.gameObject.CompareTag("Meteor") && state != State.Damaged)
         {
             state = State.Damaged;
             hp -= 1;
-            StartCoroutine(NockBack());
+            StartCoroutine(NockBack(10));
+        }
+        else if(other.gameObject.CompareTag("Goblin") && state != State.Damaged)
+        {
+            state = State.Damaged;
+            hp -= Monster.Instance.monsterDamage;
+            StartCoroutine(NockBack(10));
         }
     }
 
-    private IEnumerator NockBack()
+    private IEnumerator NockBack(float pwr)
     {
-        if(transform.rotation.y == 0)
-            rb2d.AddForce(new Vector2(-5, 0), ForceMode2D.Impulse);
-        else
-            rb2d.AddForce(new Vector2(5, 0), ForceMode2D.Impulse);
+        if(rb2d.velocity.x < 0)
+            rb2d.AddForce(new Vector2(-pwr, 0), ForceMode2D.Impulse);
+        else if(rb2d.velocity.x > 0)
+            rb2d.AddForce(new Vector2(pwr, 0), ForceMode2D.Impulse);
         yield return new WaitForSeconds(0.5f);
         state = State.Move;
     }

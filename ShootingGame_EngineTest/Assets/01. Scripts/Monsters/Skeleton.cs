@@ -43,7 +43,7 @@ public class Skeleton : Ground
         {
             animator.SetTrigger("Attack");
             state = State.Attack;
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(1f);
             attack.SetActive(true);
             yield return new WaitForSeconds(0.4f);
             attack.SetActive(false);
