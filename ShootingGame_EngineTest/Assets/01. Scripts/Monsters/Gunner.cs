@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Gunner : Ground
 {
-    protected Vector3 randPos;
-    protected Vector2 targetPos;
-    protected Vector2 target;
-    protected float angle;
-    protected bool onRight;
+    private Vector3 randPos;
+    private Vector2 targetPos;
+    private Vector2 target;
+    private float angle;
+    private bool onRight;
     [SerializeField] GameObject gunnerBullet;
     [SerializeField] Transform gunnerFirePos;
     [SerializeField] float fireDelay;
@@ -30,7 +30,7 @@ public class Gunner : Ground
         targeting();
     }
 
-    protected virtual IEnumerator Positioning()
+    private IEnumerator Positioning()
     {
         targetPos = randPos - transform.position;
         while((onRight && transform.position.x <= randPos.x) || (!onRight && transform.position.x >= randPos.x))
