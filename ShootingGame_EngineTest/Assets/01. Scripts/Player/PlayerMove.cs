@@ -73,13 +73,13 @@ public class PlayerMove : Player
         {
             animator.speed = 2;
             speed = 14f;
-            jumpPwr = 13f;
+            jumpPwr = 16f;
         }
         else
         {
             animator.speed = 1;
             speed = 7f;
-            jumpPwr = 10f;
+            jumpPwr = 13f;
         }
     }
 

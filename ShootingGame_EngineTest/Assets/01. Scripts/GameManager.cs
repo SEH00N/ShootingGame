@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public Transform EntityPooling;
     public Transform BulletPooling;
     public Transform GunnerBulletPooling;
-    public Transform SkeletonAttackPooling;
+    public Transform MonsterAttackPooling;
 
     public Transform minPos;
     public Transform maxPos;
@@ -51,11 +51,11 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(300f);
             difficulty += 1;
-            StartCoroutine(SpawnGolems());
+            StartCoroutine(SpawnMushroom());
         }
     }
 
-    private IEnumerator SpawnGolems()
+    private IEnumerator SpawnMushroom()
     {
         if(!isGolem)
             while(true)
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
                 isGolem = true;
                 spawnCount++;
                 SpawnManager.Instance.StopMethod();
-                StartCoroutine(SpawnManager.Instance.SpawnGolems(spawnCount));
+                StartCoroutine(SpawnManager.Instance.SpawnMushroom(spawnCount));
                 yield return new WaitForSeconds(300);
             }
     }

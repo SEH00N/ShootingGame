@@ -53,7 +53,6 @@ public class SpawnManager : MonoBehaviour
             if(transform.childCount > 0 && enities.childCount <= maxCount)
             {
                 int randChild = Random.Range(0, transform.childCount);
-                Debug.Log(randChild);
                 monsters.Add(transform.GetChild(randChild).gameObject);
                 monsters[0].transform.SetParent(enities);
                 monsters[0].SetActive(true);
@@ -63,7 +62,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    public IEnumerator SpawnGolems(int count)
+    public IEnumerator SpawnMushroom(int count)
     {
         for(int i = 0; i < count; i++)
         {

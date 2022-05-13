@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,11 +15,6 @@ public class Skeleton : Ground
         animator = GetComponent<Animator>();
     }
 
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-    }
-
     protected override void Update()
     {
         base.Update();
@@ -26,10 +22,10 @@ public class Skeleton : Ground
             Followplayer();
     }
 
-    private void LateUpdate()
+    protected virtual void LateUpdate()
     {
         if(state != State.Attack)
-            StartCoroutine(Attack());
+            StartCoroutine(Attack(5f, 1.7f));
     }
 
     private void Followplayer()
@@ -40,18 +36,18 @@ public class Skeleton : Ground
         rb2d.velocity = dir.normalized * speed;
     }
 
-    private IEnumerator Attack()
+    protected IEnumerator Attack(float near, float distance)
     {
         Vector2 pos = this.transform.position;
-        if(isNear(5) && state == State.Move)
+        if(isNear(near) && state == State.Move)
         {
             InstantiateOrPool();
             GameObject temp = attackPool.Dequeue();
             animator.SetTrigger("Attack");
             state = State.Attack;
             if(pos.x > player.position.x)
-                temp.transform.position = new Vector3(transform.position.x - 1.7f, transform.position.y);
-            else temp.transform.position = new Vector3(transform.position.x + 1.7f, transform.position.y);
+                temp.transform.position = new Vector3(transform.position.x - distance, transform.position.y);
+            else temp.transform.position = new Vector3(transform.position.x + distance, transform.position.y);
             yield return new WaitForSeconds(0.5f);
             temp.SetActive(true);
             yield return new WaitForSeconds(0.4f);
@@ -63,13 +59,13 @@ public class Skeleton : Ground
 
     private void InstantiateOrPool()
     {
-        if(GameManager.Instance.SkeletonAttackPooling.childCount < 1)
+        if(GameManager.Instance.MonsterAttackPooling.childCount < 1)
         {
             GameObject temp = Instantiate(attack, transform.position, Quaternion.identity);
-            temp.transform.SetParent(GameManager.Instance.SkeletonAttackPooling);
+            temp.transform.SetParent(GameManager.Instance.MonsterAttackPooling);
             attackPool.Enqueue(temp);
         }
         else
-            attackPool.Enqueue(GameManager.Instance.SkeletonAttackPooling.GetChild(0).gameObject);
+            attackPool.Enqueue(GameManager.Instance.MonsterAttackPooling.GetChild(0).gameObject);
     }
 }
