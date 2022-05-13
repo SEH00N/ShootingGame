@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 551491573326099606}
   - component: {fileID: 551491573326099609}
   - component: {fileID: 5386774361377995813}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Bat
   m_TagString: Monster
   m_Icon: {fileID: 0}

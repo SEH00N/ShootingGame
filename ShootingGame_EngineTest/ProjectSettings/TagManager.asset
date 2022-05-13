@@ -23,7 +23,7 @@ TagManager:
   - Monster
   - GunnerBullet
   - Melee
-  - 
+  - Flying
   - 
   - 
   - 
@@ -44,6 +44,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3563616981
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2736329733
     locked: 0

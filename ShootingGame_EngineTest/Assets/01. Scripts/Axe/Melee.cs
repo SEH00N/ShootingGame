@@ -13,7 +13,7 @@ public class Melee : MonoBehaviour
 
     private void MeleeDir()
     {
-        Vector3 pos = new Vector3(player.position.x, player.position.y);
+        Vector3 pos = new Vector3(player.position.x, player.position.y + 2);
         transform.position = pos;
         transform.rotation = player.transform.rotation;
     }

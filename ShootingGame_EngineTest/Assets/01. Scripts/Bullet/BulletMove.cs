@@ -15,7 +15,7 @@ public class BulletMove : MonoBehaviour
 
     private void BulletMovement()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 
     private void Limit()

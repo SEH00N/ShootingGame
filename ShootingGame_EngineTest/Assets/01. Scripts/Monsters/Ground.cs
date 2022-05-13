@@ -7,6 +7,8 @@ public class Ground : Monster
     protected override void OnEnable()
     {
         base.OnEnable();
-        transform.position = new Vector3(transform.position.x, GameManager.Instance.minPos.position.y + 2);
+        if(transform.position.x > 0)
+            transform.position = new Vector3(transform.position.x, GameManager.Instance.minPos.position.y + 8);
+        else transform.position = new Vector3(transform.position.x, GameManager.Instance.minPos.position.y + 3);
     }
 }

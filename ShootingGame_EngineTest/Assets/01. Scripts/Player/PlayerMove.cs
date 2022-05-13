@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class PlayerMove : Player
 {
+    new public static PlayerMove Instance = null;
+
     [SerializeField] float jumpPwr = 13f;
     
     [SerializeField] LayerMask groundLayer;
 
     private int jumpCount = 0;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if(Instance == null)
+            Instance = this;
+    }
 
     protected override void Start()
     {
@@ -18,7 +27,7 @@ public class PlayerMove : Player
     protected override void Update()
     {
         base.Update();
-        if(state != State.Damaged)
+        if(state != State.Damaged && state != State.Melee)
         {
             PlayerMovement();
             PlayerJumping();
@@ -29,7 +38,6 @@ public class PlayerMove : Player
     private void PlayerMovement()
     {
         state = State.Move;
-
         float h = Input.GetAxisRaw("Horizontal");
         Vector2 dir = new Vector2(h * speed, rb2d.velocity.y);
         rb2d.velocity = dir;
@@ -37,35 +45,52 @@ public class PlayerMove : Player
         GameManager.Instance.minPos.position.x + 6.5f, GameManager.Instance.maxPos.position.x - 6.5f), transform.position.y);
 
         transform.position = limit;
+
+        if(!(Mathf.Abs(rb2d.velocity.x) > 0.1))
+            animator.SetTrigger("Idle");
+        else if(!(Mathf.Abs(rb2d.velocity.x) <= 0.1))
+            animator.SetTrigger("Run");
     }
 
     private void PlayerJumping()
     {
         if(Input.GetButtonDown("Jump") && jumpCount < 1)
         {
+            animator.SetTrigger("Jump");
             jumpCount++;
             rb2d.AddForce(Vector2.up * jumpPwr, ForceMode2D.Impulse);
         }
         if(isGround())
             jumpCount = 0;
+
+        if(rb2d.velocity.y < 0)
+            animator.SetTrigger("Fall");
     }
 
     private void PlayerDash()
     {
-        if(Input.GetKey(KeyCode.LeftShift))
+        if(Input.GetKey(KeyCode.LeftShift) && state != State.Melee)
         {
+            animator.speed = 2;
             speed = 14f;
-            jumpPwr = 17f;
+            jumpPwr = 13f;
         }
         else
         {
+            animator.speed = 1;
             speed = 7f;
-            jumpPwr = 13f;
+            jumpPwr = 10f;
         }
     }
 
-    private bool isGround()
+    public bool isGround()
     {
-        return Physics2D.OverlapBox(transform.position, col2d.bounds.size, 0, groundLayer);
+        if(Physics2D.OverlapBox(transform.position, col2d.bounds.size, 0, groundLayer))
+        {
+            if(state != State.Move)
+                animator.SetTrigger("Idle");
+            return true;
+        }
+        else return false;
     }
 }

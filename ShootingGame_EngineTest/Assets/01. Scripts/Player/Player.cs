@@ -1,3 +1,4 @@
+using System.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,8 @@ public class Player : Character
     {
         Idle = 0,
         Move,
-        Fire,
+        Magic,
+        Melee,
         Damaged,
         Untouched,
     }
@@ -18,6 +20,13 @@ public class Player : Character
     public State state = State.Idle;
 
     public float playerDamage = 1f;
+
+    protected Animator animator;
+
+    protected virtual void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     protected virtual void Start()
     {
