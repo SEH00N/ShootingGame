@@ -1,3 +1,4 @@
+using System.Resources;
 using System.Data;
 using System.Collections;
 using System.Collections.Generic;
@@ -44,19 +45,8 @@ public class Player : Character
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Monster") && state != State.Damaged)
-        {
-            state = State.Damaged;
-            hp -= Monster.Instance.monsterDamage;
-            StartCoroutine(NockBack(10));
-        }
-        else if(other.gameObject.CompareTag("Meteor") && state != State.Damaged)
-        {
-            state = State.Damaged;
-            hp -= 1;
-            StartCoroutine(NockBack(10));
-        }
-        else if(other.gameObject.CompareTag("Goblin") && state != State.Damaged)
+        if ((other.gameObject.CompareTag("Monster") || other.gameObject.CompareTag("Meteor") 
+           ||other.gameObject.CompareTag("Goblin") || other.gameObject.CompareTag("Attack"))&& state != State.Damaged)
         {
             state = State.Damaged;
             hp -= Monster.Instance.monsterDamage;

@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public Transform EntityPooling;
     public Transform BulletPooling;
     public Transform GunnerBulletPooling;
+    public Transform SkeletonAttackPooling;
 
     public Transform minPos;
     public Transform maxPos;
