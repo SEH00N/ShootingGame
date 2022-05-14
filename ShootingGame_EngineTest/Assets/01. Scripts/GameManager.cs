@@ -58,13 +58,12 @@ public class GameManager : MonoBehaviour
     private IEnumerator SpawnMushroom()
     {
         if(!isGolem)
-            while(true)
-            {
-                isGolem = true;
-                spawnCount++;
-                SpawnManager.Instance.StopMethod();
-                StartCoroutine(SpawnManager.Instance.SpawnMushroom(spawnCount));
-                yield return new WaitForSeconds(300);
-            }
+        {
+            isGolem = true;
+            spawnCount++;
+            SpawnManager.Instance.StopMethod();
+            StartCoroutine(SpawnManager.Instance.SpawnMushroom(spawnCount));
+            yield return null;
+        }
     }
 }

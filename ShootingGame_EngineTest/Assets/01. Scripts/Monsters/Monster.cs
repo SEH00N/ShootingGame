@@ -69,7 +69,7 @@ public class Monster : Character
             rb2d.AddForce(new Vector2(-pwr, 0), ForceMode2D.Impulse);
         else
             rb2d.AddForce(new Vector2(pwr, 0), ForceMode2D.Impulse);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
         state = State.Move;
     }
 
