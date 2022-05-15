@@ -79,14 +79,14 @@ public class Gunner : Ground
                     Transform bullet = GameManager.Instance.GunnerBulletPooling.GetChild(0);
                     bullet.SetParent(null);
                     bullet.gameObject.SetActive(true);
-                    bullet.rotation = Quaternion.Euler(0, 0, angle);
+                    bullet.rotation = Quaternion.Euler(0, 0, angle + 270);
                     bullet.position = gunnerFirePos.position;
                     yield return new WaitForSeconds(fireinterval);
                 }
             else
                 for (int i = 0; i < 3; i++)
                 {
-                    Instantiate(gunnerBullet, gunnerFirePos.position, Quaternion.Euler(0, 0, angle));
+                    Instantiate(gunnerBullet, gunnerFirePos.position, Quaternion.Euler(0, 0, angle + 270));
                     yield return new WaitForSeconds(fireinterval);
                 }
             yield return new WaitForSeconds(fireDelay);

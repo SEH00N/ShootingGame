@@ -14,7 +14,7 @@ public class GunnerBulletMove : MonoBehaviour
 
     private void BulletMovement()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 
     private void Limit()
@@ -27,7 +27,7 @@ public class GunnerBulletMove : MonoBehaviour
             DeSpawn();
     }
 
-    private void DeSpawn()
+    protected virtual void DeSpawn()
     {
         transform.SetParent(GameManager.Instance.GunnerBulletPooling);
         gameObject.SetActive(false);

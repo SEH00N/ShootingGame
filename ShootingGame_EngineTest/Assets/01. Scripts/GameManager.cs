@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public Transform BulletPooling;
     public Transform GunnerBulletPooling;
     public Transform MonsterAttackPooling;
-
+    public Transform DragonProjectilePooling;
     public Transform minPos;
     public Transform maxPos;
 

@@ -90,7 +90,7 @@ public class Monster : Character
     public void Blocking()
     {
         Vector3 limit = new Vector3(Mathf.Clamp(transform.position.x, 
-        GameManager.Instance.minPos.position.x, GameManager.Instance.maxPos.position.x), transform.position.y);
+        GameManager.Instance.minPos.position.x + 7f, GameManager.Instance.maxPos.position.x - 7f), transform.position.y);
 
         transform.position = limit;
     }

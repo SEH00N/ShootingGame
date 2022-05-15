@@ -157,7 +157,7 @@ MonoBehaviour:
     m_Bits: 0
   monsterDamage: 1
   randPos: {x: 0, y: 0, z: 0}
-  gunnerBullet: {fileID: 5157781611997948595, guid: d753cdeb54ac38f4089d372e50f86aea, type: 3}
+  gunnerBullet: {fileID: 5157781611997948595, guid: e4ed2503c0e1dc1498a484d53c4cb185, type: 3}
   gunnerFirePos: {fileID: 6293681437164205558}
   fireDelay: 0
   fireinterval: 2
