@@ -8,7 +8,7 @@ public class Ground : Monster
     {
         base.OnEnable();
         if(transform.position.x > 0)
-            transform.position = new Vector3(transform.position.x, GameManager.Instance.minPos.position.y + 8);
-        else transform.position = new Vector3(transform.position.x, GameManager.Instance.minPos.position.y + 3);
+            transform.position = new Vector3(transform.position.x, GameManager.Instance.minPos.position.y + 6);
+        else transform.position = new Vector3(transform.position.x, GameManager.Instance.minPos.position.y + 2);
     }
 }

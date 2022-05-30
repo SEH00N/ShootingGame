@@ -43,9 +43,9 @@ public class Gunner : Ground
         {
             Vector2 dir = new Vector2(targetPos.x, rb2d.velocity.y);
             rb2d.velocity = dir.normalized * speed;
-            yield return 0;
+            yield return null;
         }
-        yield return 0;
+        yield return null;
     }
 
     private bool RightFromTarget()

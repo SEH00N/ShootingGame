@@ -32,7 +32,7 @@ public class Skeleton : Ground
     {
         state = State.Move;
         Vector2 target = player.position - transform.position;
-        Vector2 dir = new Vector2(target.x, rb2d.velocity.y);
+        Vector2 dir = new Vector2(target.x, 0);
         rb2d.velocity = dir.normalized * speed;
     }
 

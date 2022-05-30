@@ -9,7 +9,7 @@ public class PlayerDeath : MonoBehaviour
 
     private void OnDisable()
     {
-        if(Player.Instance.hp <= 0 && !OnPause.Instance.isMain)
+        if(Player.Instance.hp <= 0.1 && !OnPause.Instance.isMain)
             fadeImage.DOFade(1f, 1f).OnComplete(() => {
                    SceneManager.LoadScene("GameOver");
                 });

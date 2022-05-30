@@ -31,7 +31,7 @@ public class Monster : Character
             Instance = this;
         GameManager.Instance = FindObjectOfType<GameManager>();
         state = State.Idle;
-        rb2d.gravityScale = 10;
+        rb2d.gravityScale = 15;
         SetStartPos();
     }
 
