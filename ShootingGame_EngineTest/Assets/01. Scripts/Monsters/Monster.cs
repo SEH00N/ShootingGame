@@ -80,9 +80,9 @@ public class Monster : Character
         Vector2 startPos;
         int temp = Random.Range(0, 2);
         if(temp == 0)
-            startPos = new Vector2(min.x, Random.Range(min.y, max.y));
+            startPos = new Vector2(min.x, Random.Range(min.y + 3f, max.y));
         else
-            startPos = new Vector2(max.x, Random.Range(min.y, max.y));
+            startPos = new Vector2(max.x, Random.Range(min.y + 3f, max.y));
 
         transform.position = startPos;
     }
