@@ -44,19 +44,19 @@ public class GameManager : MonoBehaviour
     {
         elapsedTime += Time.deltaTime;
 
-        if(Input.GetKey(KeyCode.LeftShift))
-        {
-            if(Input.GetKeyDown(KeyCode.T))
-                Time.timeScale = 5;
-            else if(Input.GetKeyUp(KeyCode.T))
-                Time.timeScale = 1;
+        // if(Input.GetKey(KeyCode.LeftShift))
+        // {
+        //     if(Input.GetKeyDown(KeyCode.T))
+        //         Time.timeScale = 5;
+        //     else if(Input.GetKeyUp(KeyCode.T))
+        //         Time.timeScale = 1;
 
-            if(Input.GetKeyDown(KeyCode.P))
-            {
-                Player.Instance.hp = Mathf.Min(Player.Instance.hp + 5, 20);
-                Player.Instance.playerDamage += 1;
-            }
-        }
+        //     if(Input.GetKeyDown(KeyCode.P))
+        //     {
+        //         Player.Instance.hp = Mathf.Min(Player.Instance.hp + 5, 20);
+        //         Player.Instance.playerDamage += 1;
+        //     }
+        // }
     }
 
     private IEnumerator ChangeDifficult()
